@@ -8,15 +8,25 @@ import { MapService } from "./map.service";
 })
 export class MapComponent implements OnInit {
   @Input() location: string;
+  isPostitionError: boolean = false;
   lat: number;
   lng: number;
   constructor(private mapService: MapService) {}
 
   ngOnInit() {}
   mapReadyHandler() {
-    this.mapService.getGeoLocation(this.location).subscribe(coordinates => {
-      this.lat = coordinates.lat;
-      this.lng = coordinates.lng;
-    });
+    // let currentLocation = this.location;
+    // if (Math.round(Math.random() * 10) > 5) {
+    //   currentLocation = "fdfdvxcvdb435tdsr34fdf ";
+    // }
+    this.mapService.getGeoLocation(this.location).subscribe(
+      coordinates => {
+        this.lat = coordinates.lat;
+        this.lng = coordinates.lng;
+      },
+      () => {
+        this.isPostitionError = true;
+      }
+    );
   }
 }

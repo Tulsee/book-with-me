@@ -6,11 +6,12 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./common/header/header.component";
 import { RentalComponent } from "./rental/rental.component";
 import { RentalModule } from "./rental/rental.module";
+import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, RentalModule],
+  imports: [BrowserModule, AppRoutingModule, RentalModule, AuthModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

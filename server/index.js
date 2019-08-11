@@ -19,7 +19,7 @@ mongoose
   })
   .then(() => {
     const fakedb = new Fakedb();
-    fakedb.seedDb();
+    // fakedb.seedDb();
     console.log("MongoDB connected...");
   })
   .catch(err => console.log(err));

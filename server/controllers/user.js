@@ -78,7 +78,7 @@ exports.auth = (req, res) => {
       jwt.sign(payload, keys, { expiresIn: 3600 }, (err, token) => {
         res.json({
           success: true,
-          token: "Bearer " + token
+          token: token
         });
       });
     } else {
@@ -96,24 +96,6 @@ exports.auth = (req, res) => {
 
 exports.register = (req, res) => {
   const { username, email, password, password2 } = req.body;
-  //   if (!password || !email) {
-  //     res.status(422).send({
-  //       errors: [
-  //         { title: "Data missing", detail: "Please provide email and password" }
-  //       ]
-  //     });
-  //   }
-  //   if (password !== password2) {
-  //     res.status(422).send({
-  //       errors: [
-  //         {
-  //           title: "Invalid Passwrd",
-  //           detail: "Password and confirmation password didnot match"
-  //         }
-  //       ]
-  //     });
-  //   }
-  //   res.json({ username, email });
 
   const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -128,21 +110,6 @@ exports.register = (req, res) => {
       ]
     });
   }
-
-  //   User.findOne({
-  //     email
-  //   }).then(user => {
-  //     if (user) {
-  //       return res.status(400).send({
-  //         errors: [
-  //           {
-  //             title: "existing user",
-  //             details: "This email already exists"
-  //           }
-  //         ]
-  //       });
-  //     }
-  //   });
   User.findOne({ email }, (err, user) => {
     if (err) {
       res.status(400).send({ mongoose: "mongoose error" });

@@ -3,14 +3,12 @@ const User = require("./models/user");
 
 class Fakedb {
   constructor() {
-    this.rentals = [
-      {
+    this.rentals = [{
         title: "Nice view on ocean",
         city: "San Francisco",
         street: "Main street",
         category: "condo",
-        image:
-          "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        image: "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
         bedrooms: 4,
         shared: true,
         description: "Very nice apartment in center of the city.",
@@ -21,8 +19,7 @@ class Fakedb {
         city: "New York",
         street: "Time Square",
         category: "apartment",
-        image:
-          "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        image: "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
         bedrooms: 1,
         shared: false,
         description: "Very nice apartment in center of the city.",
@@ -33,18 +30,21 @@ class Fakedb {
         city: "Spisska Nova Ves",
         street: "Banicka 1",
         category: "house",
-        image:
-          "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        image: "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
         bedrooms: 5,
         shared: true,
         description: "Very nice apartment in center of the city.",
         dailyRate: 23
       }
     ];
-    this.users = [
-      {
+    this.users = [{
         username: "gypsy dream",
         email: "ramtulsi022@gmail.com",
+        password: "123456"
+      },
+      {
+        username: "gypsy ",
+        email: "ramtulsi@gmail.com",
         password: "123456"
       }
     ];
@@ -55,6 +55,7 @@ class Fakedb {
   }
   pushDataToDb() {
     const user = new User(this.users[0]);
+    const user2 = new User(this.users[1]);
     this.rentals.forEach(rental => {
       const newRental = new Rental(rental);
       newRental.user = user;
@@ -62,6 +63,7 @@ class Fakedb {
       newRental.save();
     });
     user.save();
+    user2.save();
   }
 
   async seedDb() {

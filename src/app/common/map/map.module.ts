@@ -9,8 +9,8 @@ import { CommonModule } from "@angular/common";
   declarations: [MapComponent],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyC8ERVkND2Lrrd-OvTlueHhZq2liTShthc" //use this sarathi cab
-      // apiKey: "AIzaSyCW9YfF1gVRFmpIPI00Ok52s9HgqNXd9_8"
+      // apiKey: "AIzaSyC8ERVkND2Lrrd-OvTlueHhZq2liTShthc" //use this sarathi cab
+      apiKey: "AIzaSyCW9YfF1gVRFmpIPI00Ok52s9HgqNXd9_8"
     }),
     CommonModule
   ],
